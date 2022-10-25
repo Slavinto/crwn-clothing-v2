@@ -1,49 +1,35 @@
-import "./categories.style.scss";
+import Catalogue from "./components/catalogue/catalogue.component.jsx";
 
 const App = () => {
   const categories = [
     {
       id: 1,
-      categoryTitle: "Hats",
-      imgSrc: "",
+      title: "hats",
+      imageUrl: "https://i.ibb.co/cvpntL1/hats.png",
     },
     {
       id: 2,
-      categoryTitle: "Jackets",
-      imgSrc: "",
+      title: "jackets",
+      imageUrl: "https://i.ibb.co/px2tCc3/jackets.png",
     },
     {
       id: 3,
-      categoryTitle: "Sneakers",
-      imgSrc: "",
+      title: "sneakers",
+      imageUrl: "https://i.ibb.co/0jqHpnp/sneakers.png",
     },
     {
       id: 4,
-      categoryTitle: "Womens",
-      imgSrc: "",
+      title: "womens",
+      imageUrl: "https://i.ibb.co/GCCdy8t/womens.png",
     },
     {
       id: 5,
-      categoryTitle: "Mens",
-      imgSrc: "",
+      title: "mens",
+      imageUrl: "https://i.ibb.co/R70vBrQ/men.png",
     },
   ];
 
-  return (
-    <div className="categories-container">
-      {categories.map(({ id, categoryTitle, imgSrc }) => {
-        return (
-          <div key={id} className="category-container">
-            <div className="background-image" src={imgSrc} />
-            <div className="category-body-container">
-              <h2>{categoryTitle}</h2>
-              <p>Shop Now</p>
-            </div>
-          </div>
-        );
-      })}
-    </div>
-  );
+  return <Catalogue categories={categories} />;
 };
 
 export default App;
