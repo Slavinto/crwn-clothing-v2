@@ -1,0 +1,37 @@
+import { initializeApp } from "firebase/app";
+import {
+  getAuth,
+  signInWithRedirect,
+  signInWithPopup,
+  GoogleAuthProvider,
+} from "firebase/auth";
+import { getFirestore, doc, getDoc, setDoc } from "firebase/firestore";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyBRpGwBfS7PelbWb_-IKCCVY_E78FER-Cg",
+  authDomain: "crown-clothing-db-177c8.firebaseapp.com",
+  projectId: "crown-clothing-db-177c8",
+  storageBucket: "crown-clothing-db-177c8.appspot.com",
+  messagingSenderId: "703956147289",
+  appId: "1:703956147289:web:5cd78e882bd260ea612548",
+};
+
+const firebaseApp = initializeApp(firebaseConfig);
+const provider = new GoogleAuthProvider();
+
+provider.setCustomParameters({
+  prompt: "select_account",
+});
+
+export const auth = getAuth();
+export const signInWithGooglePopup = () => signInWithPopup(auth, provider);
+
+export const db = getFirestore();
+
+export const createUserDocumentFromAuth = async (userAuth) => {
+  const userDocRef = doc(db, "users", userAuth.uid);
+  console.log(userDocRef);
+
+  const userSnapshot = await getDoc(userDocRef);
+  console.log(userSnapshot);
+};
